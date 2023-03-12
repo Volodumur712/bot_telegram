@@ -8,22 +8,24 @@ openai.api_key = "sk-"
 
 @bot.message_handler(content_types=['text'])
 def lalala(message):
-    if "/start" in message.text.lower():
-        bot.send_message(message.chat.id, "Привіт, я презентаційний бот, такий самий може бути і в тебе, запитай у мене що небудь")
+    if any(word in message.text.lower() for word in ["/start", "start", "stop", "end"]):
+        bot.send_message(message.chat.id, "Привіт, я презентаційний варіант бота зі штучним інтелектом, такий самий може бути і в тебе, спробуй запитати у мене про що небудь")
+    
     elif "путін" in message.text.lower():
         bot.send_message(message.chat.id, "цей гівнюк - XYйл0")
-    elif "хто ти" in message.text.lower():
-        bot.send_message(message.chat.id, "Я презентую можливості")
     elif "вова" in message.text.lower():
         bot.send_message(message.chat.id, "красавчик який написав цей код")
     elif "як тебе" in message.text.lower():
         bot.send_message(message.chat.id, "presentational")
-    elif "автор бот" in message.text.lower():
+
+    elif any(word in message.text.lower() for word in ["хто ти", "що ти", "можеш", "які твої", "можливості"]):
+        bot.send_message(message.chat.id, "Я презентую можливості штучного інтелекту, постав мені запитання")
+    elif any(word in message.text.lower() for word in ["автор", "шедевр", "бота", "розробник"]):
         bot.send_message(message.chat.id, "Слуценко Володимир Миколайович")
-    elif "контакт автор" in message.text.lower():
+    elif any(word in message.text.lower() for word in ["контакт", "автор", "розробник", "резюме", "замовити"]):
         bot.send_message(message.chat.id, "http://citrus.infinityfreeapp.com/")
     elif any(word in message.text.lower() for word in ["олія", "цукор", "мука", "овочі"]):
-        bot.send_message(message.chat.id, "Я з масиву 1")
+        bot.send_message(message.chat.id, "товари на жіва")
     elif any(word in message.text.lower() for word in ["візок", "гойдалка", "колиска", "заколис"]):
         bot.send_message(message.chat.id, "шукай дешевше")
     else:
